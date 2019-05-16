@@ -11,4 +11,5 @@ phases:
 artifacts:
   files:
     - AWSScratch/build_output/**/*
+    - aws-windows-deployment-manifest.json
     - appspec.yml
