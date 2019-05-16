@@ -1,13 +1,14 @@
 version: 0.2
-
 phases:
-  install:
-    runtime-versions:
-      java: openjdk11
-  post_build:
+  pre_build:
     commands:
-      - mvn package
+      - echo Restore started on `date`
+      - dotnet restore AWSScratch.csproj
+  build:
+    commands:
+      - echo Build started on `date`
+      - dotnet publish -c release -o ./build_output AWSScratch.csproj
 artifacts:
   files:
-    - '**/*'
-  base-directory: 'target/my-web-app'
+    - AWSScratch/build_output/**/*
+    - appspec.yml
